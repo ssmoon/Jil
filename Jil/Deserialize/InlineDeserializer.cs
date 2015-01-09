@@ -605,7 +605,7 @@ namespace Jil.Deserialize
             {
                 Emit.StoreLocal(loc); // TextWriter
                 Emit.LoadLocalAddress(loc); // TextWriter DateTime*
-                Emit.Call(toUniversalTime); // TextWriter DateTime
+                Emit.Call(toLocalTime); // TextWriter DateTime
                 Emit.StoreLocal(loc); // TextWriter
                 Emit.LoadLocalAddress(loc); // TextWriter DateTime*
             }
