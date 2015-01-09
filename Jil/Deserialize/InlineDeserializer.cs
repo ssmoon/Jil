@@ -600,7 +600,15 @@ namespace Jil.Deserialize
 
             Emit.LoadConstant((int)DateTimeKind.Utc);       // long DateTimeKind
             Emit.NewObject<DateTime, long, DateTimeKind>(); // DateTime
-
+            var toLocalTime = typeof(DateTime).GetMethod("ToLocalTime");
+            using (var loc = Emit.DeclareLocal<DateTime>())
+            {
+                Emit.StoreLocal(loc); // TextWriter
+                Emit.LoadLocalAddress(loc); // TextWriter DateTime*
+                Emit.Call(toUniversalTime); // TextWriter DateTime
+                Emit.StoreLocal(loc); // TextWriter
+                Emit.LoadLocalAddress(loc); // TextWriter DateTime*
+            }
             ExpectQuote();                  // DateTime
         }
 
