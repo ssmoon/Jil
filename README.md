@@ -11,7 +11,7 @@ Just add some code in InlineDeserializer.cs ==> ReadNewtosoftDateTime(), before 
         {
             Emit.StoreLocal(loc); // TextWriter
             Emit.LoadLocalAddress(loc); // TextWriter DateTime*
-            Emit.Call(toUniversalTime); // TextWriter DateTime
+            Emit.Call(toLocalTime); // TextWriter DateTime
             Emit.StoreLocal(loc); // TextWriter
             Emit.LoadLocalAddress(loc); // TextWriter DateTime*
         }
